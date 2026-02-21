@@ -14,6 +14,7 @@ import me.owdding.skyocean.generated.SkyOceanPreInitModules
 import me.owdding.skyocean.helpers.MixinHelper
 import me.owdding.skyocean.utils.chat.ChatUtils.sendWithPrefix
 import net.fabricmc.api.ClientModInitializer
+import net.fabricmc.fabric.impl.datagen.FabricDataGenHelper
 import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.registries.VanillaRegistries
@@ -59,7 +60,9 @@ object SkyOcean : ClientModInitializer, MeowddingLogger by MeowddingLogger.autoR
         SkyOceanModules.init {
             SkyBlockAPI.eventBus.register(it)
         }
-        if (RepoAPI.isInitialized()) {
+
+        @Suppress("UnstableApiUsage")
+        if (RepoAPI.isInitialized() && !FabricDataGenHelper.ENABLED) {
             onRepoReady()
         }
     }
