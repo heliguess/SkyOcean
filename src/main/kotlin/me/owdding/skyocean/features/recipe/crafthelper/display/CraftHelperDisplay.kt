@@ -94,6 +94,7 @@ object CraftHelperDisplay : MeowddingLogger by SkyOcean.featureLogger() {
         craftHelperLayout = null
     }
 
+    @Suppress("LongMethod")
     private fun visualize(tree: ContextAwareRecipeTree, output: ItemLikeIngredient, maxWidth: Int, callback: () -> ((save: Boolean) -> Unit)): AbstractWidget {
         val sources = ItemSources.craftHelperSources - CraftHelperConfig.disallowedSources.toSet()
         val tracker = ItemTracker(sources)
@@ -203,7 +204,10 @@ object CraftHelperDisplay : MeowddingLogger by SkyOcean.featureLogger() {
 
             widget(body.asScrollable(contentWidth, McFont.height * 20.coerceAtMost(lines)))
         }.asWidget().let {
-            val background = BackgroundWidget(SkyOcean.minecraft("tooltip/background"), SkyOcean.minecraft("tooltip/frame"), widget = it, padding = BACKGROUND_PADDING)
+            val background = BackgroundWidget(
+                SkyOcean.minecraft("tooltip/background"), SkyOcean.minecraft("tooltip/frame"),
+                widget = it, padding = BACKGROUND_PADDING,
+            )
             background.setPosition(CraftHelperConfig.margin, (McScreen.self?.height?.div(2) ?: 0) - (it.height / 2))
             background
         }
