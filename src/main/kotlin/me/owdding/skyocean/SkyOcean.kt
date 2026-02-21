@@ -82,9 +82,9 @@ object SkyOcean : ClientModInitializer, MeowddingLogger by MeowddingLogger.autoR
             Text.of().send()
             Text.join(
                 "New version found! (",
-                Text.of(current).withColor(TextColor.RED),
-                Text.of(" -> ").withColor(TextColor.GRAY),
-                Text.of(new).withColor(TextColor.GREEN),
+                Text.of(current, TextColor.RED),
+                Text.of(" -> ", TextColor.GRAY),
+                Text.of(new, TextColor.GREEN),
                 ")",
             ).withLink().sendWithPrefix()
             Text.of("Click to download.").withLink().sendWithPrefix()
