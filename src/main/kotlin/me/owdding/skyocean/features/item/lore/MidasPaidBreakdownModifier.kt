@@ -9,10 +9,10 @@ import net.minecraft.world.item.ItemStack
 import tech.thatgravyboat.skyblockapi.api.datatype.DataTypes
 import tech.thatgravyboat.skyblockapi.api.datatype.getData
 import tech.thatgravyboat.skyblockapi.utils.extentions.toFormattedString
+import tech.thatgravyboat.skyblockapi.utils.text.TextBuilder.append
 import tech.thatgravyboat.skyblockapi.utils.text.TextColor
 import tech.thatgravyboat.skyblockapi.utils.text.TextProperties.stripped
 import tech.thatgravyboat.skyblockapi.utils.text.TextStyle.color
-import tech.thatgravyboat.skyblockapi.utils.text.TextBuilder.append
 
 @ItemModifier
 object MidasPaidBreakdownModifier : AbstractItemModifier() {
@@ -26,12 +26,12 @@ object MidasPaidBreakdownModifier : AbstractItemModifier() {
         val originalBid = item.getData(DataTypes.MIDAS_WEAPON_BID) ?: return@withMerger null
         val addedCoins = item.getData(DataTypes.MIDAS_WEAPON_ADDED_COINS) ?: return@withMerger null
 
-        addAfterNext({it.stripped.contains("Price paid: ")}){
-            add{
+        addAfterNext({ it.stripped.contains("Price paid: ") }) {
+            add {
                 append("Original Bid: ") { color = TextColor.DARK_GRAY }
                 append(originalBid.toFormattedString()) { color = TextColor.GOLD }
             }
-            add{
+            add {
                 append("Added Coins: ") { color = TextColor.DARK_GRAY }
                 append(addedCoins.toFormattedString()) { color = TextColor.GOLD }
             }
