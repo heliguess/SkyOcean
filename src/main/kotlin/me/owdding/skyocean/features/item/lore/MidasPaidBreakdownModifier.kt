@@ -12,7 +12,6 @@ import tech.thatgravyboat.skyblockapi.utils.extentions.toFormattedString
 import tech.thatgravyboat.skyblockapi.utils.text.TextBuilder.append
 import tech.thatgravyboat.skyblockapi.utils.text.TextColor
 import tech.thatgravyboat.skyblockapi.utils.text.TextProperties.stripped
-import tech.thatgravyboat.skyblockapi.utils.text.TextStyle.color
 
 @ItemModifier
 object MidasPaidBreakdownModifier : AbstractItemModifier() {
@@ -28,14 +27,13 @@ object MidasPaidBreakdownModifier : AbstractItemModifier() {
 
         addAfterNext({ it.stripped.contains("Price paid: ") }) {
             add {
-                append("Original Bid: ") { color = TextColor.DARK_GRAY }
-                append(originalBid.toFormattedString()) { color = TextColor.GOLD }
+                append("Original Bid: ", TextColor.DARK_GRAY)
+                append(originalBid.toFormattedString(), TextColor.GOLD)
             }
             add {
-                append("Added Coins: ") { color = TextColor.DARK_GRAY }
-                append(addedCoins.toFormattedString()) { color = TextColor.GOLD }
+                append("Added Coins: ", TextColor.DARK_GRAY)
+                append(addedCoins.toFormattedString(), TextColor.GOLD)
             }
-
         }
 
         Result.modified
