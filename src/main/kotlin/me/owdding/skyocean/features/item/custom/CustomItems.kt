@@ -2,7 +2,6 @@ package me.owdding.skyocean.features.item.custom
 
 import com.google.common.cache.Cache
 import com.google.common.cache.CacheBuilder
-import me.owdding.ktmodules.Module
 import me.owdding.lib.utils.MeowddingLogger
 import me.owdding.lib.utils.MeowddingLogger.Companion.featureLogger
 import me.owdding.skyocean.SkyOcean
